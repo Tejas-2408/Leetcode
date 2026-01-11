@@ -10,3 +10,4 @@ k elements consecutively to maximise the sum
 
 2. Longest Subarray/Substring with condition
 3. No. of Subarrays with condition
+4. Shortest/Minimum with condition
