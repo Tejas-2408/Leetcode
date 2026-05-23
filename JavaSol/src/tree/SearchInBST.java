@@ -17,5 +17,20 @@ public class SearchInBST {
         return val < root.val
                 ? searchBST(root.left, val)
                 : searchBST(root.right, val);
+
+
+//        while (root != null) {
+//
+//            if (root.val == val) {
+//                return root;
+//            }
+//
+//            root = val < root.val
+//                    ? root.left
+//                    : root.right;
+//        }
+//
+//        return null;
+
     }
 }
