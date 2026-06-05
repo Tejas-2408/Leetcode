@@ -19,9 +19,9 @@ public class LevelOrderTraversalII {
     }
 
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        LinkedList<List<Integer>> result = new LinkedList<>();
+        LinkedList<List<Integer>> ans = new LinkedList<>();
         if(root == null){
-            return result;
+            return ans;
         }
         Queue<TreeNode> qu = new ArrayDeque<>();
         qu.offer(root);
@@ -40,9 +40,9 @@ public class LevelOrderTraversalII {
                     qu.offer(currentNode.right);
                 }
             }
-            result.addFirst(currentLevelList);
+            ans.addFirst(currentLevelList);
         }
-        return result;
+        return ans;
 
     }
 }
