@@ -4,42 +4,56 @@ package tree;
 
 public class SortedArrayToBST {
 
-    private class TreeNode{
-        int val;
+    static public class TreeNode {
+      int val;
       TreeNode left;
       TreeNode right;
       TreeNode() {}
-     TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
           this.left = left;
           this.right = right;
-     }
-    }
+      }
+  }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5,6,7,8};
-        sortedArrayToBST(arr);
+        TreeNode root = sortedArrayToBST(new int[]{1,2,3,4,5});
+        display(root,"Root Node: ");
+
     }
 
-    public static TreeNode sortedArrayToBST(int[] arr) {
-        return sortInsert(arr);
+    static public TreeNode sortedArrayToBST(int[] nums) {
+        return build(nums,0,nums.length-1);
     }
 
-    private static TreeNode sortInsert(int[] arr) {
-        return sortedInsertArray(arr,0,arr.length);
+    static private TreeNode build(int[] nums, int start, int end) {
+        // Base case: no elements in range
+        if (start > end) return null;
+
+        // Always pick middle element as root → guarantees height balance
+        int mid = start + (end - start) / 2;
+
+        TreeNode node = new TreeNode(nums[mid]);
+
+        // Left subtree  → elements before mid
+        node.left  = build(nums, start, mid - 1);
+
+        // Right subtree → elements after mid
+        node.right = build(nums, mid + 1, end);
+
+        return node;
     }
 
-    private static TreeNode sortedInsertArray(int[] arr, int s, int e) {
-        if(s>=e){
-            return null;
+
+    static private void display(TreeNode node, String details) {
+        if(node == null){
+            return;
         }
 
-        int m = (s+e)/2;
-        insert(arr[m]);
-        sortedInsertArray(arr,s,m);
-        sortedInsertArray(arr,m+1,e);
+        System.out.println(details + node.val);
+
+        display(node.left, "Left child of "+ node.val + " : ");
+        display(node.right, "Right child of "+ node.val + " : ");
     }
-
-
 }

@@ -5,7 +5,7 @@ public class DeleteNodePresentArray {
 
     }
 
-    public ListNode modifiedList(int[] nums, ListNode head){
-
-    }
+//    public ListNode modifiedList(int[] nums, ListNode head){
+//
+//    }
 }
